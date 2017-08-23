@@ -25,13 +25,13 @@ public class GerenciadorDeUsuarios {
     //implementar uma mapa de login e senhas
     
     public void addLoginSenha(String login, String senha){
-        mapaLoginSenha.put(senha, login);
+        mapaLoginSenha.put(login, senha);
     }
     
     public boolean autenticar(String login, String senha){
       boolean existe=false;  
-        String user=mapaLoginSenha.get(senha);
-        if(user.equals(login)){
+        String user=mapaLoginSenha.get(login);
+        if(user.equals(senha)){
         existe=true;
         }
         return existe;

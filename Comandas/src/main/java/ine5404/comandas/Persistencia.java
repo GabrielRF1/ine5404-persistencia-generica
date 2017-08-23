@@ -25,6 +25,7 @@ public class Persistencia<E> {
         saida.writeObject(elemento);
         saida.close();
     }
+
     public E RecuperarObjeto(String name) throws FileNotFoundException, IOException, ClassNotFoundException {
         FileInputStream arquivo = new FileInputStream(name);
         ObjectInputStream entrada = new ObjectInputStream(arquivo);
