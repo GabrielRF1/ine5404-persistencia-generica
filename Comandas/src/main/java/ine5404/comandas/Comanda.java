@@ -5,24 +5,31 @@
  */
 package ine5404.comandas;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author martin
  */
 public class Comanda {
     protected Cliente cliente;
-    //faca uma lista de pedidos
-
+    protected List<Pedido> pedidos;
+    
     public Comanda(Cliente cliente) {
         this.cliente = cliente;
+        pedidos=new ArrayList<>();
     }
     
     public void addPedido(Pedido pedido){
-        //implementar
+        this.pedidos.add(pedido);
     }
     
     public double getTotal(){
-        //implementar        
-        return -1;
+          double tot=0;
+          for(Pedido p:pedidos){
+              tot+=p.getValor();
+          }
+        return tot;
     }
 }

@@ -5,6 +5,7 @@
  */
 package ine5404.comandas;
 
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -13,16 +14,26 @@ import java.util.Map;
  */
 public class GerenciadorDeUsuarios {
     Map<String, String> mapaLoginSenha;
+
+    public GerenciadorDeUsuarios() {
+    mapaLoginSenha = new HashMap<>();
+    }
+
+    
+    
     
     //implementar uma mapa de login e senhas
     
     public void addLoginSenha(String login, String senha){
-        //implementar
+        mapaLoginSenha.put(senha, login);
     }
     
     public boolean autenticar(String login, String senha){
-        //verificar se o par login e senha está no mapa
-        
-        return false;
+      boolean existe=false;  
+        String user=mapaLoginSenha.get(senha);
+        if(user.equals(login)){
+        existe=true;
+        }
+        return existe;
     }
 }
