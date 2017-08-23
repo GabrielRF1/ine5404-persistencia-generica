@@ -25,11 +25,11 @@ public class Persistencia<E> {
         saida.writeObject(elemento);
         saida.close();
     }
-    public void RecuperarObjeto(E elemento,String name) throws FileNotFoundException, IOException, ClassNotFoundException {
+    public E RecuperarObjeto(String name) throws FileNotFoundException, IOException, ClassNotFoundException {
         FileInputStream arquivo = new FileInputStream(name);
         ObjectInputStream entrada = new ObjectInputStream(arquivo);
-        elemento= (E) entrada.readObject();
-        entrada.close();
+        return (E) entrada.readObject();
+        
     }
     
 }
