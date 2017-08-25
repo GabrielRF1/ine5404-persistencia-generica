@@ -5,7 +5,9 @@
  */
 package ine5404.comandas;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -16,10 +18,18 @@ import javax.swing.JOptionPane;
  */
 public class Lojinha {
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, ClassNotFoundException {
         Persistencia p = new Persistencia();
-        GerenciadorDeUsuarios GU = new GerenciadorDeUsuarios();
-        List<Cliente> client = new ArrayList<>();
+        GerenciadorDeUsuarios GU;
+        List<Cliente> client;
+        try {
+           GU = (GerenciadorDeUsuarios) p.RecuperarObjeto("Cadastros.bin");
+          client = (List) p.RecuperarObjeto("Clientes.bin");
+        } catch (java.io.FileNotFoundException Q) {
+            GU = new GerenciadorDeUsuarios();
+            client = new ArrayList<>();
+        }
+
         do {
             int OP = Integer.parseInt(JOptionPane.showInputDialog("      Bom dia/tarde/noite\n--------------*-----------\n"
                     + "1-Cadatrar-se\n2-Login\nOutro-Sair\n"
@@ -40,7 +50,8 @@ public class Lojinha {
                     String senha = JOptionPane.showInputDialog("Senha:");
                     GU.addLoginSenha(log, senha);
                     client.add(c = new Cliente(nome, cpf));
-                    p.SalvarEmDisco("Cadastros", GU);
+                    p.SalvarEmDisco("Cadastros.bin", GU);
+                    p.SalvarEmDisco("Clientes.bin", client);
                     JOptionPane.showMessageDialog(null, "Seja bem vindo, Sr.(a)" + nome);
                     break;
                 case 2:

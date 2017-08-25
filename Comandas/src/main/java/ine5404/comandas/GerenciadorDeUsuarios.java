@@ -5,6 +5,7 @@
  */
 package ine5404.comandas;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -12,7 +13,7 @@ import java.util.Map;
  *
  * @author martin
  */
-public class GerenciadorDeUsuarios {
+public class GerenciadorDeUsuarios implements Serializable{
     Map<String, String> mapaLoginSenha;
 
     public GerenciadorDeUsuarios() {

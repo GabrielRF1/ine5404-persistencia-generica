@@ -16,7 +16,7 @@ import java.io.ObjectOutputStream;
  *
  * @author martin
  */
-public class Persistencia<E> {
+public class Persistencia<E>{
 
     //implemente uma classe para gravar e recuperar uma Comanda e um GerenciadorDeUsuarios
     public void SalvarEmDisco(String name, E elemento) throws FileNotFoundException, IOException {
