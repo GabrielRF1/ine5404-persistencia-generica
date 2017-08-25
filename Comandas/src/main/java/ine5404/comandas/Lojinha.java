@@ -55,7 +55,18 @@ public class Lojinha {
                     JOptionPane.showMessageDialog(null, "Seja bem vindo, Sr.(a)" + nome);
                     break;
                 case 2:
-                    break;
+                    boolean ok=false;            
+                    String user =JOptionPane.showInputDialog("Usuário:");
+                    String pass =JOptionPane.showInputDialog("Senha");
+                    try{
+                    ok= GU.autenticar(user, pass);
+                    JOptionPane.showMessageDialog(null, 
+                            "Você realmente se cadastrou");
+                    }catch(NullPointerException z){
+                        JOptionPane.showMessageDialog(null,
+                                "Você não está cadastrado");
+                    }
+                        break;
                 default:
                     return;
             }
